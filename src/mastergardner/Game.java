@@ -123,8 +123,14 @@ public class Game extends Canvas implements Runnable{
         
     }
     
+    int x = 0, y = 0;
+    
     public void update() {
         key.update();
+        if (key.up) y--;
+        if (key.down) y++;
+        if (key.left) x--;
+        if (key.right) x++;
     }
     
     
@@ -138,7 +144,7 @@ public class Game extends Canvas implements Runnable{
         }
         
         screen.clear();
-        screen.render(0, 0);
+        screen.render(x, y);
         
         //copy pixels from Scrern class to BufferedImage array
         System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
