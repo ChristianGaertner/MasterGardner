@@ -11,6 +11,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import mastergardner.graphics.Screen;
 import mastergardner.input.Keyboard;
@@ -64,9 +66,10 @@ public class Game extends Canvas implements Runnable{
         running = false;
         try {
             thread.join();
-        } catch(InterruptedException e) {
-            // e.printStackTrace();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     /**
