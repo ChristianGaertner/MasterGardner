@@ -15,6 +15,9 @@ public class Sprite {
     public int[] pixels;
     private SpriteSheet sheet;
     
+    // Sprites
+    public static Sprite grass = new Sprite(16, 0, 0, null);
+    
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         pixels = new int[SIZE * SIZE];

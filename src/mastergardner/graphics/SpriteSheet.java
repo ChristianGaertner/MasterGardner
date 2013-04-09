@@ -20,12 +20,19 @@ public class SpriteSheet {
     public final int SIZE;
     public int[] pixels;
     
+    /**
+     *
+     */
+    public static SpriteSheet tiles = new SpriteSheet(null, 7);
+    
     public SpriteSheet(String path, int size) {
         this.path = path;
         SIZE = size;
         pixels = new int[SIZE * SIZE];
         load();
     }
+
+    
     
     private void load() {
         try {
