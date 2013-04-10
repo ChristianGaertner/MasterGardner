@@ -98,6 +98,7 @@ public class Game extends Canvas implements Runnable{
         int updates;
         updates = 0;
         
+        requestFocus(); //focus the canvas
         while (running) {
             long now;
             now = System.nanoTime();
@@ -130,10 +131,10 @@ public class Game extends Canvas implements Runnable{
     
     public void update() {
         key.update();
-        if (key.up) y--;
-        if (key.down) y++;
-        if (key.left) x--;
-        if (key.right) x++;
+        if (key.up) y++;
+        if (key.down) y--;
+        if (key.left) x++;
+        if (key.right) x--;
     }
     
     
