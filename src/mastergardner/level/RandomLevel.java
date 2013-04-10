@@ -20,7 +20,7 @@ public class RandomLevel extends Level{
     }
     
     /**
-     * This will generate the random level, obviously
+     * This will generate thec random level, obviously
      */
     @Override
     protected void generateLevel() {

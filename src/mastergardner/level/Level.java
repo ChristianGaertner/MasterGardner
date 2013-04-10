@@ -39,6 +39,12 @@ public class Level {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
+    /**
+     *
+     * @param xScroll
+     * @param yScroll
+     * @param screen
+     */
     public void render(int xScroll, int yScroll, Screen screen) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
