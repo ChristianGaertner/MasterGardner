@@ -12,8 +12,8 @@ import mastergardner.graphics.Screen;
  */
 public class Level {
     
-    private int width, height;
-    private int[] tiles;
+    protected int width, height;
+    protected int[] tiles;
     
     public Level(int width, int height) {
         this.width = width;
@@ -23,7 +23,7 @@ public class Level {
     }
 
     
-    private void generateLevel() {
+    protected void generateLevel() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
