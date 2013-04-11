@@ -19,7 +19,18 @@ public class Tile {
      */
     public Sprite sprite;
     
+    //-------------------------TILES-----------------
+    
+    /**
+     * Basic Grass - not solid - green 16x16
+     */
     public static Tile grass = new GrassTile(Sprite.grass);
+    
+    /**
+     * Void Tile - not solid - black 16x16
+     */
+    public static Tile voidTile = new VoidTile(Sprite.voidTile);
+    //-------------------------TILES-----------------//END
     /**
      *
      * @param sprite

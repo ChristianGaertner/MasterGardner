@@ -5,6 +5,7 @@
 package mastergardner.level;
 
 import mastergardner.graphics.Screen;
+import mastergardner.level.tile.Tile;
 
 /**
  *
@@ -54,6 +55,11 @@ public class Level {
         x1 = (xScroll + screen.width) >> 4;
         y0 = yScroll >> 4;
         y1 = (yScroll + screen.height) >> 4;
+    }
+    
+    public Tile getTile(int x, int y) {
+        if (tiles[x + y * width] == 0) return Tile.grass;
+        return Tile.voidTile;
     }
     
 }
