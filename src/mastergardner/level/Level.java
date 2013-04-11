@@ -12,6 +12,9 @@ import mastergardner.graphics.Screen;
  */
 public class Level {
     
+    /**
+     * Width & Height of the Map
+     */
     protected int width, height;
     protected int[] tiles;
     
@@ -46,7 +49,11 @@ public class Level {
      * @param screen
      */
     public void render(int xScroll, int yScroll, Screen screen) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int x0, y0, x1, y1;
+        x0 = xScroll >> 4;
+        x1 = (xScroll + screen.width) >> 4;
+        y0 = yScroll >> 4;
+        y1 = (yScroll + screen.height) >> 4;
     }
-
+    
 }

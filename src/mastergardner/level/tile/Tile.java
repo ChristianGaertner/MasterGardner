@@ -14,6 +14,9 @@ import mastergardner.graphics.Sprite;
 public class Tile {
     
     public int x, y;
+    /**
+     * The sprite to use for the tile, object declaration in the constructor
+     */
     public Sprite sprite;
     
     public static Tile grass = new GrassTile(Sprite.grass);
