@@ -133,10 +133,11 @@ public class Game extends Canvas implements Runnable{
         key.update();
         speed = 0;
         if (key.control) speed = 2;
-        if (key.up) y += 1 + speed;
-        if (key.down) y -= 1 + speed;
-        if (key.left) x += 1 + speed;
-        if (key.right) x -= 1 + speed;
+        
+        if (key.up)     y += 1 + speed;
+        if (key.down)   y -= 1 + speed;
+        if (key.left)   x += 1 + speed;
+        if (key.right)  x -= 1 + speed;
     }
     
     
