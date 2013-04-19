@@ -15,6 +15,7 @@ import mastergardner.input.Keyboard;
 public class Player extends Mob {
     
     private Keyboard input;
+    private Sprite sprite;
     
     /**
      * Spawn Player at default point
@@ -54,6 +55,19 @@ public class Player extends Mob {
     
     @Override
     public void render(Screen screen) {
-        screen.renderPlayer(x - 16, y - 16, Sprite.player); //-16 in order to center player
+        //get correct sprite
+        switch (dir){
+            case 0: sprite = Sprite.player_for;
+                break;
+            case 1: sprite = Sprite.player_left;
+                break;
+            case 2: sprite = Sprite.player_back;
+                break;
+            case 3: sprite = Sprite.player_right;
+                break;
+            default:
+                sprite = Sprite.player_back;
+        }
+        screen.renderPlayer(x - 16, y - 16, sprite); //-16 in order to center player
     }
 }

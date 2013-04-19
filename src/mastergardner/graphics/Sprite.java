@@ -20,7 +20,10 @@ public class Sprite {
     public static Sprite voidTile = new Sprite(16, 0x1B87E0); //SIZE, COLOR
         
 
-    public static Sprite player = new Sprite(32, 0, 5, SpriteSheet.tiles);
+    public static Sprite player_for = new Sprite(32, 0, 5, SpriteSheet.tiles);
+    public static Sprite player_back = new Sprite(32, 2, 5, SpriteSheet.tiles);
+    public static Sprite player_right = new Sprite(32, 3, 5, SpriteSheet.tiles);
+    public static Sprite player_left = new Sprite(32, 1, 5, SpriteSheet.tiles);
     
     /**
      * Constructor for accessing tiles from the spritesheet
