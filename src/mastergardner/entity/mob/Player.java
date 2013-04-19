@@ -55,19 +55,22 @@ public class Player extends Mob {
     
     @Override
     public void render(Screen screen) {
+        int flip;
+        flip = 0;
+        
         //get correct sprite
         switch (dir){
             case 0: sprite = Sprite.player_for;
                 break;
-            case 1: sprite = Sprite.player_left;
+            case 1 : sprite = Sprite.player_side;
                 break;
             case 2: sprite = Sprite.player_back;
                 break;
-            case 3: sprite = Sprite.player_right;
+            case 3: sprite = Sprite.player_side; flip = 1;
                 break;
             default:
                 sprite = Sprite.player_back;
         }
-        screen.renderPlayer(x - 16, y - 16, sprite); //-16 in order to center player
+        screen.renderPlayer(x - 16, y - 16, sprite, flip); //-16 in order to center player
     }
 }

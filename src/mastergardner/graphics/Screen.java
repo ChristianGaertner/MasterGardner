@@ -68,16 +68,45 @@ public class Screen {
         }
     }
     
-    public void renderPlayer(int xp, int yp, Sprite sprite) {
+    /**
+     * @param xp
+     * @param yp
+     * @param sprite
+     * @param flip
+     * FLIP DOC:
+     * 0: nothing
+     * 1: x
+     * 2: y
+     * 3: both
+     */
+    public void renderPlayer(int xp, int yp, Sprite sprite, int flip) {
         xp -= xOffset;
         yp -= yOffset;
-        for (int y = 0; y < 32; y++) {
-            int ya = y + yp;
-            for (int x = 0; x < 32; x++) {
-                int xa = x + xp;
-                if (xa < -32 || xa >= width || ya < 0 || ya >= height) break;
+        for (int y = 0; y < sprite.SIZE; y++) {
+            
+            int ya;
+            ya = y + yp;
+            
+            //sprite flipping
+            int ys;
+            ys = y;
+            if (flip == 2 || flip == 3) ys = (sprite.SIZE - 1) - y;
+            
+            for (int x = 0; x < sprite.SIZE; x++) {
+                
+                int xa;
+                xa = x + xp;
+                
+                //sprite flipping
+                int xs;
+                xs = x;
+                if (flip == 1 || flip == 3) xs = (sprite.SIZE - 1) - x;
+                
+                
+                
+                if (xa < -sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
                 if (xa < 0) xa = 0;
-                int col = sprite.pixels[x + y * 32]; //get color of pixel
+                int col = sprite.pixels[xs + ys * sprite.SIZE]; //get color of pixel
                 if (col != 0xffFF00FF) pixels[xa + ya * width] = col; //if its pink (FF00FF) do not render ('cause this should be transparent)
             }
         }
