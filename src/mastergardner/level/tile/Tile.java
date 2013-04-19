@@ -30,6 +30,7 @@ public class Tile {
      * Void Tile - not solid - black 16x16
      */
     public static Tile voidTile = new VoidTile(Sprite.voidTile);
+    
     //-------------------------TILES-----------------//END
     /**
      *

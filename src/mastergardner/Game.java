@@ -11,11 +11,11 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import mastergardner.graphics.Screen;
 import mastergardner.input.Keyboard;
+import mastergardner.level.Level;
+import mastergardner.level.RandomLevel;
 
 /**
  *
@@ -34,6 +34,8 @@ public class Game extends Canvas implements Runnable{
     private Thread thread;
     private JFrame frame;
     private Keyboard key;
+    private Level level;
+    
     private boolean running = false;
     
     private Screen screen;
@@ -50,6 +52,7 @@ public class Game extends Canvas implements Runnable{
         screen = new Screen(width, height);
         frame = new JFrame();
         key = new Keyboard();
+        level = new RandomLevel(64, 64);
        
         addKeyListener(key);
         
@@ -67,7 +70,6 @@ public class Game extends Canvas implements Runnable{
         try {
             thread.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -102,7 +104,7 @@ public class Game extends Canvas implements Runnable{
         while (running) {
             long now;
             now = System.nanoTime();
-            delta += (now-lastTime) / ns;
+            delta += (now - lastTime) / ns;
             lastTime = now;
             
             //update 60 times per second   
@@ -114,7 +116,7 @@ public class Game extends Canvas implements Runnable{
             render();
             frames++;
             
-            if (System.currentTimeMillis() - timer > 1000) {
+            if (System.currentTimeMillis() - timer >= 1000) {
                 timer += 1000;
                 // System.out.println(updates + " ups, " + frames + " fps");
                 frame.setTitle(title + "  |  " + updates + " ups, " + frames + " fps");
@@ -132,12 +134,12 @@ public class Game extends Canvas implements Runnable{
     public void update() {
         key.update();
         speed = 0;
-        if (key.control) speed = 2;
+        if (key.alt) speed = 2;
         
-        if (key.up)     y += 1 + speed;
-        if (key.down)   y -= 1 + speed;
-        if (key.left)   x += 1 + speed;
-        if (key.right)  x -= 1 + speed;
+        if (key.up)     y -= 1 + speed;
+        if (key.down)   y += 1 + speed;
+        if (key.left)   x -= 1 + speed;
+        if (key.right)  x += 1 + speed;
     }
     
     
@@ -151,9 +153,9 @@ public class Game extends Canvas implements Runnable{
         }
         
         screen.clear();
-        screen.render(x, y);
+        level.render(x, y, screen);
         
-        //copy pixels from Scrern class to BufferedImage array
+        //copy pixels from Screen class to BufferedImage array
         System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
         
         Graphics g = bs.getDrawGraphics();

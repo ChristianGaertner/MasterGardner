@@ -17,7 +17,7 @@ public class Sprite {
     
     // Sprites
     public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
-    public static Sprite voidTile = new Sprite(16, 0);
+    public static Sprite voidTile = new Sprite(16, 0x1B87E0); //SIZE, COLOR
     
     /**
      * Constructor for accessing tiles from the spritesheet

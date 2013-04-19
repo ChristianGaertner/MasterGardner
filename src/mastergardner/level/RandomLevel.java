@@ -12,11 +12,15 @@ import java.util.Random;
  */
 public class RandomLevel extends Level{
     
-    private final Random random;
+    private static final Random random = new Random();
     
+    /**
+     *
+     * @param width
+     * @param height
+     */
     public RandomLevel(int width, int height) {
         super(width, height);
-        this.random = new Random();
     }
     
     /**
