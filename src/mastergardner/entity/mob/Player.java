@@ -54,9 +54,6 @@ public class Player extends Mob {
     
     @Override
     public void render(Screen screen) {
-        screen.renderPlayer(x, y, Sprite.player0);
-        screen.renderPlayer(x + 16, y, Sprite.player1);
-        screen.renderPlayer(x, y + 16, Sprite.player2);
-        screen.renderPlayer(x + 16, y + 16, Sprite.player3);
+        screen.renderPlayer(x - 16, y - 16, Sprite.player); //-16 in order to center player
     }
 }

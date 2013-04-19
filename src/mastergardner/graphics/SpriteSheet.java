@@ -21,7 +21,7 @@ public class SpriteSheet {
     public int[] pixels;
     
     /**
-     *
+     * Main Spritesheet "/textures/spritesheet.png"
      */
     public static SpriteSheet tiles = new SpriteSheet("/textures/spritesheet.png", 256);
     

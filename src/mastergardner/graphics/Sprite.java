@@ -18,12 +18,9 @@ public class Sprite {
     // Sprites, make sure to leave size at 16 or change it at mastergardner.level.Level, in the x0, etc. setting.
     public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
     public static Sprite voidTile = new Sprite(16, 0x1B87E0); //SIZE, COLOR
-    
-    
-    public static Sprite player0 = new Sprite(16, 0, 10, SpriteSheet.tiles);
-    public static Sprite player1 = new Sprite(16, 1, 10, SpriteSheet.tiles);
-    public static Sprite player2 = new Sprite(16, 0, 11, SpriteSheet.tiles);
-    public static Sprite player3 = new Sprite(16, 1, 11, SpriteSheet.tiles);
+        
+
+    public static Sprite player = new Sprite(32, 0, 5, SpriteSheet.tiles);
     
     /**
      * Constructor for accessing tiles from the spritesheet
