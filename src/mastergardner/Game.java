@@ -7,11 +7,13 @@ package mastergardner;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
+import mastergardner.entity.mob.Player;
 import mastergardner.graphics.Screen;
 import mastergardner.input.Keyboard;
 import mastergardner.level.Level;
@@ -35,6 +37,7 @@ public class Game extends Canvas implements Runnable{
     private JFrame frame;
     private Keyboard key;
     private Level level;
+    private Player player;
     
     private boolean running = false;
     
@@ -53,6 +56,7 @@ public class Game extends Canvas implements Runnable{
         frame = new JFrame();
         key = new Keyboard();
         level = new RandomLevel(64, 64);
+        player = new Player(key);
        
         addKeyListener(key);
         
@@ -129,17 +133,9 @@ public class Game extends Canvas implements Runnable{
         
     }
     
-    int x = 0, y = 0, speed;
-    
     public void update() {
         key.update();
-        speed = 0;
-        if (key.alt) speed = 2;
-        
-        if (key.up)     y -= 1 + speed;
-        if (key.down)   y += 1 + speed;
-        if (key.left)   x -= 1 + speed;
-        if (key.right)  x += 1 + speed;
+        player.update();
     }
     
     
@@ -153,7 +149,17 @@ public class Game extends Canvas implements Runnable{
         }
         
         screen.clear();
-        level.render(x, y, screen);
+        
+        //setting offsets...
+        int xScroll;
+        xScroll = player.x - screen.width / 2;
+        int yScroll;
+        yScroll = player.y - screen.height / 2;
+        
+        //rendering...
+        level.render(xScroll, yScroll, screen);
+        player.render(screen);
+        
         
         //copy pixels from Screen class to BufferedImage array
         System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
@@ -162,6 +168,10 @@ public class Game extends Canvas implements Runnable{
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+        
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Verdana", 0, 50));
+        
         g.dispose();
         bs.show();
     }
