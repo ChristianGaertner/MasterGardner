@@ -15,7 +15,7 @@ public class Sprite {
     public int[] pixels;
     private SpriteSheet sheet;
     
-    // Sprites
+    // Sprites, make sure to leave size at 16 or change it at mastergardner.level.Level, in the x0, etc. setting.
     public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
     public static Sprite voidTile = new Sprite(16, 0x1B87E0); //SIZE, COLOR
     

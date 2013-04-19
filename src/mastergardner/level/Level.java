@@ -56,9 +56,9 @@ public class Level {
         
         int x0, y0, x1, y1;
         x0 = xScroll >> 4;
-        x1 = (xScroll + screen.width) >> 4;
+        x1 = (xScroll + screen.width + 16) >> 4; //change to Sprite.SIZE in the future
         y0 = yScroll >> 4;
-        y1 = (yScroll + screen.height) >> 4;
+        y1 = (yScroll + screen.height + 16) >> 4; //change to Sprite.SIZE in the future
         
         for (int y = y0; y < y1; y++) {
             for (int x = x0; x < x1; x++) {
