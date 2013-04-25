@@ -19,13 +19,24 @@ public class Sprite {
     private SpriteSheet sheet;
     
     // Sprites, make sure to leave size at 16 or change it at mastergardner.level.Level, in the x0, etc. setting.
-    public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
+    public static Sprite grass = new Sprite(16, 0, 2, SpriteSheet.tiles);
     public static Sprite flower = new Sprite(16, 1, 0, SpriteSheet.tiles);
     public static Sprite rock = new Sprite(16, 2, 0, SpriteSheet.tiles);
+    public static Sprite voidTile = new Sprite(16, 0x1B87E0); //SIZE, COLOR    
     
-    public static Sprite voidTile = new Sprite(16, 0x1B87E0); //SIZE, COLOR
+    //spawn level sprites
+    public static Sprite spawn_grass = new Sprite(16, 0, 0, SpriteSheet.spawn_level);
+    public static Sprite spawn_hedge = new Sprite(16, 1, 0, SpriteSheet.spawn_level);
+    public static Sprite spawn_water = new Sprite(16, 2, 0, SpriteSheet.spawn_level);
+    public static Sprite spawn_wall1 = new Sprite(16, 0, 1, SpriteSheet.spawn_level);
+    public static Sprite spawn_wall2 = new Sprite(16, 0, 2, SpriteSheet.spawn_level);
+    public static Sprite spawn_floor = new Sprite(16, 1, 1, SpriteSheet.spawn_level);
+    
+    
+    
+    
         
-
+    //player level sprites
     public static Sprite player_forward = new Sprite(32, 0, 5, SpriteSheet.tiles);
     public static Sprite player_back = new Sprite(32, 2, 5, SpriteSheet.tiles);
     public static Sprite player_side = new Sprite(32, 1, 5, SpriteSheet.tiles);

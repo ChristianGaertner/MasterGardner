@@ -13,12 +13,12 @@ import mastergardner.level.tile.Tile;
  */
 public class Level {
     
-    protected Tile[] tiles;
     /**
      * Width & Height of the Map
      */
     protected int width, height;
     protected int[] tilesInt;
+    protected int[] tiles;
     
     public Level(int width, int height) {
         this.width = width;
@@ -29,6 +29,7 @@ public class Level {
     
     public Level(String path) {
         loadLevel(path);
+        generateLevel();
     }
 
     
@@ -63,9 +64,7 @@ public class Level {
         
         for (int y = y0; y < y1; y++) {
             for (int x = x0; x < x1; x++) {
-//                getTile(x, y).render(x, y, screen); //just for random level gen
-                if (x < 0 || y < 0 || x >= width || y >= height) Tile.voidTile.render(x, y, screen);
-                else tiles[x + y * 16].render(x, y, screen);             
+                getTile(x, y).render(x, y, screen); //just for random level gen             
             }
             
         }
@@ -73,17 +72,22 @@ public class Level {
     
     /**
      *
+     * Color Codes:
+     * Grass = 0xff00FF00
+     * Flower = 0xffFFFF00
+     * Rock = 0xff7F7F00
+     * 
      * @param x
      * @param y
      * @return
      */
     public Tile getTile(int x, int y) {
-        if(x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile; //out of boundarys preventer
+        if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile; //out of boundarys preventer
         
-        if (tilesInt[x + y * width] == 0) return Tile.grass;
-        if (tilesInt[x + y * width] == 1) return Tile.flower;
-        if (tilesInt[x + y * width] == 2) return Tile.rock;
-        
+        if (tiles[x + y * width] == 0xff00FF00) return Tile.grass;
+        if (tiles[x + y * width] == 0xffFFFF00) return Tile.flower;
+        if (tiles[x + y * width] == 0xff7F7F00) return Tile.rock;
+       
         return Tile.voidTile;
     }
     
