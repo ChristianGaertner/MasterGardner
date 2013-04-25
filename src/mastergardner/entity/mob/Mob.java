@@ -14,7 +14,7 @@ import mastergardner.graphics.Sprite;
 public abstract class Mob extends Entity {
     
     protected Sprite sprite;
-    protected int dir = -1;
+    protected int dir = 2;
     protected boolean moving = false;
     
     

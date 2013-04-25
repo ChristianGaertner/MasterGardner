@@ -27,6 +27,16 @@ public class Tile {
     public static Tile grass = new GrassTile(Sprite.grass);
     
     /**
+     * Grass with flower - not solid - green (yellow) 16x16
+     */
+    public static Tile flower = new FlowerTile(Sprite.flower);
+    
+    /**
+     * Grass with rock - solid - green (grey) 16x16
+     */
+    public static Tile rock = new RockTile(Sprite.rock);
+    
+    /**
      * Void Tile - not solid - black 16x16
      */
     public static Tile voidTile = new VoidTile(Sprite.voidTile);

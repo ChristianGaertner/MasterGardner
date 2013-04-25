@@ -17,7 +17,7 @@ import mastergardner.entity.mob.Player;
 import mastergardner.graphics.Screen;
 import mastergardner.input.Keyboard;
 import mastergardner.level.Level;
-import mastergardner.level.RandomLevel;
+import mastergardner.level.SpawnLevel;
 
 /**
  *
@@ -55,7 +55,7 @@ public class Game extends Canvas implements Runnable{
         screen = new Screen(width, height);
         frame = new JFrame();
         key = new Keyboard();
-        level = new RandomLevel(64, 64);
+        level = new SpawnLevel("/textures/level.png");
         player = new Player(key);
        
         addKeyListener(key);
