@@ -4,6 +4,8 @@
  */
 package mastergardner.entity.npc;
 
+import java.util.List;
+import java.util.ArrayList;
 import mastergardner.entity.Entity;
 import mastergardner.entity.projectile.KingProjectile;
 import mastergardner.entity.projectile.Projectile;
@@ -27,6 +29,11 @@ public abstract class NPC extends Entity {
      *
      */
     protected boolean moving = false;
+    
+    /**
+     *
+     */
+    protected List<Projectile> projectiles = new ArrayList<Projectile>();
 
     /**
      * Move the NPC
@@ -67,8 +74,16 @@ public abstract class NPC extends Entity {
     public void update() {
     }
     
+    /**
+     *
+     * @param x
+     * @param y
+     * @param dir
+     */
     protected void shoot(int x, int y, double dir) {
         Projectile p = new KingProjectile(x, y, dir);
+        projectiles.add(p);
+        level.add(p);
     }
 
     private boolean collision(int xa, int ya) {

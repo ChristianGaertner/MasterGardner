@@ -84,10 +84,18 @@ public class Game extends Canvas implements Runnable{
         
     }
     
+    /**
+     *
+     * @return
+     */
     public static int getWindowWidth() {
         return width * scale;
     }
     
+    /**
+     *
+     * @return
+     */
     public static int getWindowHeight() {
         return height * scale;
     }
@@ -175,6 +183,7 @@ public class Game extends Canvas implements Runnable{
     public void update() {
         key.update();
         player.update();
+        level.update();
     }
     
     
@@ -213,7 +222,7 @@ public class Game extends Canvas implements Runnable{
         
         g.setColor(Color.WHITE);
         g.setFont(new Font("Verdana", 0, 50));
-        g.drawString("Button: " + Mouse.getButton(), 80, 80);
+        
         g.dispose();
         bs.show();
     }

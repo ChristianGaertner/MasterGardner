@@ -4,6 +4,9 @@
  */
 package mastergardner.level;
 
+import java.util.ArrayList;
+import java.util.List;
+import mastergardner.entity.Entity;
 import mastergardner.graphics.Screen;
 import mastergardner.level.tile.Tile;
 
@@ -25,6 +28,8 @@ public class Level {
      *
      */
     protected int[] tiles;
+    
+    private List<Entity> entities = new ArrayList<Entity>();
     
     /**
      * The spawn level 40 * 75
@@ -67,10 +72,13 @@ public class Level {
     }
     
     /**
-     *
+     * Adds an entity to the level and triggers the entity' s render() method
      */
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for (int i = 0; i < entities.size(); i++) {
+            entities.get(i).update();
+        }
+        
     }
     
     private void time() {
@@ -98,6 +106,17 @@ public class Level {
             }
             
         }
+        for (int i = 0; i < entities.size(); i++) {
+            entities.get(i).render(screen);
+        }
+    }
+    
+    /**
+     *
+     * @param entity
+     */
+    public void add(Entity entity) {
+        entities.add(entity);
     }
     
     /**

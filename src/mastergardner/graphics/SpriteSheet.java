@@ -17,7 +17,13 @@ import javax.imageio.ImageIO;
 public class SpriteSheet {
     
     private String path;
+    /**
+     *
+     */
     public final int SIZE;
+    /**
+     *
+     */
     public int[] pixels;
     
     /**
@@ -25,7 +31,17 @@ public class SpriteSheet {
      */
     public static SpriteSheet tiles = new SpriteSheet("/textures/sheets/spritesheet.png", 256);
     
+    /**
+     * King-Projectile Spritesheet "/textures/sheets/projectiles/king.png" 64x64
+     */
+    public static SpriteSheet projectiles_king = new SpriteSheet("/textures/sheets/projectiles/king.png", 64);
+    
 
+    /**
+     *
+     * @param path
+     * @param size
+     */
     public SpriteSheet(String path, int size) {
         this.path = path;
         SIZE = size;

@@ -26,6 +26,10 @@ public class YellowHedgeTile extends Tile{
         screen.renderTile(x << 4, y << 4, this);
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean breakable() {
         return true;
     }

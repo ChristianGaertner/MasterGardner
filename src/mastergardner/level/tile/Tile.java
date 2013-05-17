@@ -13,7 +13,14 @@ import mastergardner.graphics.Sprite;
  */
 public class Tile {
     
-    public int x, y;
+    /**
+     *
+     */
+    public int x,
+    /**
+     *
+     */
+    y;
     
     /**
      * The Hex-Demcial represantation of the color used in the level-sheets
@@ -138,6 +145,9 @@ public class Tile {
     public static Tile water_dark_waved = new DarkWavedWaterTile(Sprite.water_dark_waved);
     
     
+    /**
+     *
+     */
     public static Tile planks = new PlanksTile(Sprite.planks);
     
     /**
