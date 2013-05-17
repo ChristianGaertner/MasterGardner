@@ -4,6 +4,7 @@
  */
 package mastergardner.entity.npc;
 
+import mastergardner.Game;
 import mastergardner.graphics.Screen;
 import mastergardner.graphics.Sprite;
 import mastergardner.input.Keyboard;
@@ -87,10 +88,10 @@ public class Player extends NPC {
     }
 
     private void updateShooting() {
-        
+
         if (Mouse.getButton() == 1) {
-            double dx = Math.abs(Mouse.getX() - x);
-            double dy = Math.abs(Mouse.getY() - y);
+            double dx = Mouse.getX() - (Game.getWindowWidth() / 2);
+            double dy = Mouse.getY() - (Game.getWindowHeight() / 2);
             double angle = Math.atan2(dy, dx);
             shoot(x, y, angle);
         }

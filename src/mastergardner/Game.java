@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -19,7 +18,6 @@ import mastergardner.graphics.Screen;
 import mastergardner.input.Keyboard;
 import mastergardner.input.Mouse;
 import mastergardner.level.Level;
-import mastergardner.level.SpawnLevel;
 import mastergardner.level.TileCoordinate;
 
 /**
@@ -84,6 +82,14 @@ public class Game extends Canvas implements Runnable{
         addMouseListener(mouse);
         addMouseMotionListener(mouse);
         
+    }
+    
+    public static int getWindowWidth() {
+        return width * scale;
+    }
+    
+    public static int getWindowHeight() {
+        return height * scale;
     }
     
     

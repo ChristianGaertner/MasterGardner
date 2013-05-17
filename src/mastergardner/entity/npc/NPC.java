@@ -5,6 +5,8 @@
 package mastergardner.entity.npc;
 
 import mastergardner.entity.Entity;
+import mastergardner.entity.projectile.KingProjectile;
+import mastergardner.entity.projectile.Projectile;
 import mastergardner.graphics.Sprite;
 
 /**
@@ -63,10 +65,10 @@ public abstract class NPC extends Entity {
      */
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
     
     protected void shoot(int x, int y, double dir) {
+        Projectile p = new KingProjectile(x, y, dir);
     }
 
     private boolean collision(int xa, int ya) {
@@ -89,6 +91,5 @@ public abstract class NPC extends Entity {
      *
      */
     public void render() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
