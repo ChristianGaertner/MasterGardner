@@ -2,24 +2,32 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mastergardner.level.tile.spawn_level;
+package mastergardner.level.tile;
 
 import mastergardner.graphics.Screen;
 import mastergardner.graphics.Sprite;
-import mastergardner.level.tile.Tile;
 
 /**
  *
  * @author Christian
  */
-public class SpawnFloorTile extends Tile{
+public class RockTile extends Tile{
     
-    public SpawnFloorTile(Sprite sprite){
+    /**
+     *
+     * @param sprite
+     */
+    public RockTile(Sprite sprite) {
         super(sprite);
     }
     
     @Override
-    public void render(int x, int y, Screen screen){
+    public void render(int x, int y, Screen screen) {
         screen.renderTile(x << 4, y << 4, this);
+    }
+    
+    @Override
+    public boolean solid() {
+        return true;
     }
 }
