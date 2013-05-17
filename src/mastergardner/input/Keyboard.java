@@ -14,9 +14,31 @@ import java.awt.event.KeyListener;
 public class Keyboard implements KeyListener{
     
     private boolean[] keys = new boolean[65536];
-    public boolean up, down, left, right, alt;
+    /**
+     * W || UP_Arrow
+     */
+    public boolean up,
+    /**
+     * S || DOWN_Arrow
+     */
+    down,
+    /**
+     * A || LEFT_Arrow
+     */
+    left,
+    /**
+     * D || RIGHT_Arrow
+     */
+    right,
+    /**
+     * ALT || SUPER
+     */
+    alt;
     
     
+    /**
+     *
+     */
     public void update() {
         up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
         down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
@@ -26,15 +48,27 @@ public class Keyboard implements KeyListener{
                              
     }
 
+    /**
+     *
+     * @param ke
+     */
     @Override
     public void keyTyped(KeyEvent ke) {  
     }
 
+    /**
+     *
+     * @param ke
+     */
     @Override
     public void keyPressed(KeyEvent ke) {
         keys[ke.getKeyCode()] = true;
     }
 
+    /**
+     *
+     * @param ke
+     */
     @Override
     public void keyReleased(KeyEvent ke) {
         keys[ke.getKeyCode()] = false;

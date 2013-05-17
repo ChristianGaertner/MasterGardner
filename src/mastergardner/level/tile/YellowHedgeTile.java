@@ -11,13 +11,13 @@ import mastergardner.graphics.Sprite;
  *
  * @author Christian
  */
-public class GrassTile extends Tile{
+public class YellowHedgeTile extends Tile{
     
     /**
      *
      * @param sprite
      */
-    public GrassTile(Sprite sprite) {
+    public YellowHedgeTile(Sprite sprite) {
         super(sprite);
     }
     
@@ -26,4 +26,7 @@ public class GrassTile extends Tile{
         screen.renderTile(x << 4, y << 4, this);
     }
     
+    public boolean breakable() {
+        return true;
+    }
 }

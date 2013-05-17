@@ -11,13 +11,13 @@ import mastergardner.graphics.Sprite;
  *
  * @author Christian
  */
-public class RockTile extends Tile{
+public class NatureRockTile extends Tile{
     
     /**
      *
      * @param sprite
      */
-    public RockTile(Sprite sprite) {
+    public NatureRockTile(Sprite sprite) {
         super(sprite);
     }
     

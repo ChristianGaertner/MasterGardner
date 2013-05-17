@@ -11,13 +11,13 @@ import mastergardner.graphics.Sprite;
  *
  * @author Christian
  */
-public class GrassTile extends Tile{
+public class DarkFlatGrassTile extends Tile{
     
     /**
      *
      * @param sprite
      */
-    public GrassTile(Sprite sprite) {
+    public DarkFlatGrassTile(Sprite sprite) {
         super(sprite);
     }
     

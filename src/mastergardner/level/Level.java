@@ -17,9 +17,25 @@ public class Level {
      * Width & Height of the Map
      */
     protected int width, height;
+    /**
+     *
+     */
     protected int[] tilesInt;
+    /**
+     *
+     */
     protected int[] tiles;
     
+    /**
+     * The spawn level 40 * 75
+     */
+    public static Level spawn = new SpawnLevel("/levels/spawn.png");
+    
+    /**
+     *
+     * @param width
+     * @param height
+     */
     public Level(int width, int height) {
         this.width = width;
         this.height = height;
@@ -27,18 +43,32 @@ public class Level {
         generateLevel();
     }
     
+    /**
+     *
+     * @param path
+     */
     public Level(String path) {
         loadLevel(path);
         generateLevel();
     }
 
     
+    /**
+     *
+     */
     protected void generateLevel() {
     }
     
+    /**
+     *
+     * @param path
+     */
     protected void loadLevel(String path) {
     }
     
+    /**
+     *
+     */
     public void update() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -72,21 +102,18 @@ public class Level {
     
     /**
      *
-     * Color Codes:
-     * Grass = 0xff00FF00
-     * Flower = 0xffFFFF00
-     * Rock = 0xff7F7F00
      * 
      * @param x
      * @param y
-     * @return
+     * @return Tile
      */
     public Tile getTile(int x, int y) {
         if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile; //out of boundarys preventer
         
-        if (tiles[x + y * width] == 0xff00FF00) return Tile.grass;
-        if (tiles[x + y * width] == 0xffFFFF00) return Tile.flower;
-        if (tiles[x + y * width] == 0xff7F7F00) return Tile.rock;
+        if (tiles[x + y * width] == Tile.planks.color_code) return Tile.planks;
+        if (tiles[x + y * width] == Tile.bricks_mix.color_code) return Tile.bricks_mix;
+        if (tiles[x + y * width] == Tile.bricks.color_code) return Tile.bricks;
+        if (tiles[x + y * width] == Tile.grass.color_code) return Tile.grass;
        
         return Tile.voidTile;
     }

@@ -2,25 +2,27 @@
  * Player
  * controlled by HDI
  */
-package mastergardner.entity.mob;
+package mastergardner.entity.npc;
 
 import mastergardner.graphics.Screen;
 import mastergardner.graphics.Sprite;
 import mastergardner.input.Keyboard;
+import mastergardner.input.Mouse;
 
 /**
  *
  * @author Christian
  */
-public class Player extends Mob {
-    
+public class Player extends NPC {
+
     private Keyboard input;
     private Sprite sprite;
     private int anim;
     private boolean walking;
-    
+
     /**
      * Spawn Player at default point
+     *
      * @param input
      */
     public Player(Keyboard input) {
@@ -28,9 +30,10 @@ public class Player extends Mob {
         this.anim = 0;
         this.input = input;
     }
-    
+
     /**
      * Spawn player at certain position
+     *
      * @param x
      * @param y
      * @param input
@@ -42,39 +45,66 @@ public class Player extends Mob {
         this.y = y;
         this.input = input;
     }
-    
+
+    /**
+     *
+     */
     @Override
-    public void update(){
+    public void update() {
         int xa;
         xa = 0;
         int ya;
         ya = 0;
-        
+
         if (anim < 7500) { //int cannot hold too high values
             anim++;
         } else {
             anim = 0;
         }
-        
-        if (input.up) ya--;
-        if (input.down) ya++;
-        if (input.left) xa--;
-        if (input.right) xa++;
-        
-        if (xa != 0 || ya != 0){
+
+        if (input.up) {
+            ya--;
+        }
+        if (input.down) {
+            ya++;
+        }
+        if (input.left) {
+            xa--;
+        }
+        if (input.right) {
+            xa++;
+        }
+
+        if (xa != 0 || ya != 0) {
             move(xa, ya);
             walking = true;
         } else {
             walking = false;
         }
-        
+
+        updateShooting();
+
     }
-    
+
+    private void updateShooting() {
+        
+        if (Mouse.getButton() == 1) {
+            double dx = Math.abs(Mouse.getX() - x);
+            double dy = Math.abs(Mouse.getY() - y);
+            double angle = Math.atan2(dy, dx);
+            shoot(x, y, angle);
+        }
+    }
+
+    /**
+     *
+     * @param screen
+     */
     @Override
     public void render(Screen screen) {
         int flip;
         flip = 0;
-        
+
         //get correct sprite
         if (dir == 0) {
             sprite = Sprite.player_forward;
@@ -85,9 +115,9 @@ public class Player extends Mob {
                     sprite = Sprite.player_forward_2;
                 }
             }
-            
+
         }
-        if(dir == 1) {
+        if (dir == 1) {
             sprite = Sprite.player_side;
             if (walking) {
                 if (anim % 20 > 10) {
@@ -97,7 +127,7 @@ public class Player extends Mob {
                 }
             }
         }
-        if(dir == 2) {
+        if (dir == 2) {
             sprite = Sprite.player_back;
             if (walking) {
                 if (anim % 20 > 10) {
@@ -107,7 +137,7 @@ public class Player extends Mob {
                 }
             }
         }
-        if(dir == 3) {
+        if (dir == 3) {
             sprite = Sprite.player_side;
             if (walking) {
                 if (anim % 20 > 10) {

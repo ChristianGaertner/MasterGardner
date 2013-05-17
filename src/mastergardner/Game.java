@@ -9,15 +9,18 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
-import mastergardner.entity.mob.Player;
+import mastergardner.entity.npc.Player;
 import mastergardner.graphics.Screen;
 import mastergardner.input.Keyboard;
+import mastergardner.input.Mouse;
 import mastergardner.level.Level;
 import mastergardner.level.SpawnLevel;
+import mastergardner.level.TileCoordinate;
 
 /**
  *
@@ -28,14 +31,27 @@ public class Game extends Canvas implements Runnable{
     
     
     
-    public static int width = 300;
+    /**
+     *
+     */
+    public static int width = 400;
+    /**
+     *
+     */
     public static int height = width / 16 * 9;
+    /**
+     *
+     */
     public static int scale = 3;
+    /**
+     *
+     */
     public static String title = "MasterGardner";
     
     private Thread thread;
     private JFrame frame;
     private Keyboard key;
+    private Mouse mouse;
     private Level level;
     private Player player;
     
@@ -47,6 +63,9 @@ public class Game extends Canvas implements Runnable{
     private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
     
     
+    /**
+     *
+     */
     public Game() {
         Dimension size;
         size = new Dimension(width * scale, height * scale);
@@ -55,20 +74,31 @@ public class Game extends Canvas implements Runnable{
         screen = new Screen(width, height);
         frame = new JFrame();
         key = new Keyboard();
-        level = new SpawnLevel("/textures/levels/level.png");
-        player = new Player(6*16, 4*16, key);
+        mouse = new Mouse();
+        level = Level.spawn;
+        TileCoordinate playerSpawn = new TileCoordinate(20, 65);
+        player = new Player(playerSpawn.x(), playerSpawn.y(), key);
+        player.init(level);
        
         addKeyListener(key);
+        addMouseListener(mouse);
+        addMouseMotionListener(mouse);
         
     }
     
     
+    /**
+     *
+     */
     public synchronized void start() {
         running = true;
         thread = new Thread(this, "Display");
         thread.start();
     }
     
+    /**
+     *
+     */
     public synchronized void stop() {
         running = false;
         try {
@@ -133,12 +163,18 @@ public class Game extends Canvas implements Runnable{
         
     }
     
+    /**
+     *
+     */
     public void update() {
         key.update();
         player.update();
     }
     
     
+    /**
+     *
+     */
     public void render() {
         BufferStrategy bs;
         bs = getBufferStrategy();
@@ -171,7 +207,7 @@ public class Game extends Canvas implements Runnable{
         
         g.setColor(Color.WHITE);
         g.setFont(new Font("Verdana", 0, 50));
-        
+        g.drawString("Button: " + Mouse.getButton(), 80, 80);
         g.dispose();
         bs.show();
     }
@@ -179,6 +215,10 @@ public class Game extends Canvas implements Runnable{
     
     
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Game game = new Game();
         

@@ -19,6 +19,7 @@ public class GrassTile extends Tile{
      */
     public GrassTile(Sprite sprite) {
         super(sprite);
+        this.color_code = 0xff00ff00;
     }
     
     @Override

@@ -25,10 +25,7 @@ public class SpriteSheet {
      */
     public static SpriteSheet tiles = new SpriteSheet("/textures/sheets/spritesheet.png", 256);
     
-    /**
-     * Sprites for Spawn Level "/textures/sheets/spawn_level.png" 48x48
-     */
-    public static SpriteSheet spawn_level = new SpriteSheet("/textures/sheets/spawn_level.png", 48);
+
     public SpriteSheet(String path, int size) {
         this.path = path;
         SIZE = size;

@@ -19,22 +19,49 @@ public abstract class Entity {
      */
     public int x, y;
     private boolean removed = false;
+    /**
+     *
+     */
     protected Level level;
+    /**
+     *
+     */
     protected final Random random= new Random();
     
     
+    /**
+     *
+     */
     public void update() {
     }
     
+    /**
+     *
+     * @param screen
+     */
     public void render(Screen screen) {
     }
     
+    /**
+     *
+     */
     public void remove(){
-        throw new UnsupportedOperationException("Not supported yet.");
-//        removed = true;
+        removed = true;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isRemoved(){
         return removed;
+    }
+    
+    /**
+     *
+     * @param level
+     */
+    public void init(Level level) {
+        this.level = level;
     }
 }

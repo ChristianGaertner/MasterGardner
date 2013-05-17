@@ -15,10 +15,18 @@ import javax.imageio.ImageIO;
 public class SpawnLevel extends Level {
     
     
+    /**
+     *
+     * @param path
+     */
     public SpawnLevel(String path) {
         super(path);
     }
     
+    /**
+     *
+     * @param path
+     */
     @Override
     protected void loadLevel(String path) {
         try {
@@ -31,15 +39,5 @@ public class SpawnLevel extends Level {
         } catch(IOException e) {
             System.out.println("Exception! Could not load level file!");
         }
-    }
-    
-    /**
-     * Color Codes:
-     * Grass = 0xff00FF00
-     * Flower = 0xffFFFF00
-     * Rock = 0xff7F7F00
-     */
-    @Override
-    protected void generateLevel() {
     }
 }

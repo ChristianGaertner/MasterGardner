@@ -11,14 +11,15 @@ import mastergardner.graphics.Sprite;
  *
  * @author Christian
  */
-public class RockTile extends Tile{
+public class BricksTile extends Tile{
     
     /**
      *
      * @param sprite
      */
-    public RockTile(Sprite sprite) {
+    public BricksTile(Sprite sprite) {
         super(sprite);
+        this.color_code = 0xffa5a5a5;
     }
     
     @Override

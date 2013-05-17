@@ -5,7 +5,7 @@
 package mastergardner.graphics;
 
 import java.util.Random;
-import mastergardner.entity.mob.Player;
+import mastergardner.entity.npc.Player;
 import mastergardner.level.tile.Tile;
 
 /**
@@ -18,12 +18,31 @@ public class Screen {
      * Screen Height & Width
      */
     public int width, height;
+    /**
+     *
+     */
     public int[] pixels;
+    /**
+     *
+     */
     public final int MAP_SIZE = 64;
+    /**
+     *
+     */
     public final int MAP_SIZE_MASK = MAP_SIZE -1;
     
-    public int xOffset, yOffset;
+    /**
+     *
+     */
+    public int xOffset,
+    /**
+     *
+     */
+    yOffset;
     
+    /**
+     *
+     */
     public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
     
     private Random random;
@@ -48,12 +67,21 @@ public class Screen {
         
     }
     
+    /**
+     *
+     */
     public void clear() {
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = 0;
         }
     }
         
+    /**
+     *
+     * @param xp
+     * @param yp
+     * @param tile
+     */
     public void renderTile(int xp, int yp, Tile tile) {
         xp -= xOffset;
         yp -= yOffset;
@@ -112,6 +140,11 @@ public class Screen {
         }
     }
     
+    /**
+     *
+     * @param xOffset
+     * @param yOffset
+     */
     public void setOffset(int xOffset, int yOffset) {
         this.xOffset = xOffset;
         this.yOffset = yOffset;
