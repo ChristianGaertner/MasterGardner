@@ -34,7 +34,7 @@ public class SpriteSheet {
     /**
      * King-Projectile Spritesheet "/textures/sheets/projectiles/king.png" 64x64
      */
-    public static SpriteSheet projectiles_king = new SpriteSheet("/textures/sheets/projectiles/king.png", 64);
+    public static SpriteSheet projectiles_basic = new SpriteSheet("/textures/sheets/projectiles/basic.png", 64);
     
 
     /**

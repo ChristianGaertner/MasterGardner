@@ -7,6 +7,7 @@ package mastergardner.level;
 import java.util.ArrayList;
 import java.util.List;
 import mastergardner.entity.Entity;
+import mastergardner.entity.projectile.Projectile;
 import mastergardner.graphics.Screen;
 import mastergardner.level.tile.Tile;
 
@@ -30,6 +31,8 @@ public class Level {
     protected int[] tiles;
     
     private List<Entity> entities = new ArrayList<Entity>();
+    
+    private List<Projectile> projectiles = new ArrayList<Projectile>();
     
     /**
      * The spawn level 40 * 75
@@ -56,7 +59,11 @@ public class Level {
         loadLevel(path);
         generateLevel();
     }
-
+    
+    
+    public List<Projectile> getProjectiles() {
+        return projectiles;
+    }
     
     /**
      *
@@ -72,11 +79,14 @@ public class Level {
     }
     
     /**
-     * Adds an entity to the level and triggers the entity' s render() method
+     * Update all entities and projectiles
      */
     public void update() {
         for (int i = 0; i < entities.size(); i++) {
             entities.get(i).update();
+        }
+        for (int i = 0; i < projectiles.size(); i++) {
+            projectiles.get(i).update();
         }
         
     }
@@ -86,7 +96,7 @@ public class Level {
     }
     
     /**
-     *
+     * Renders the level
      * @param xScroll
      * @param yScroll
      * @param screen
@@ -109,10 +119,13 @@ public class Level {
         for (int i = 0; i < entities.size(); i++) {
             entities.get(i).render(screen);
         }
+        for (int i = 0; i < projectiles.size(); i++) {
+            projectiles.get(i).render(screen);
+        }
     }
     
     /**
-     *
+     * Add an entity to the level
      * @param entity
      */
     public void add(Entity entity) {
@@ -120,7 +133,15 @@ public class Level {
     }
     
     /**
-     *
+     * Add a Projectile to the level
+     * @param p 
+     */
+    public void addProjectile(Projectile p) {
+        projectiles.add(p);
+    }
+    
+    /**
+     * Returns the tile for the given coordinates
      * 
      * @param x
      * @param y

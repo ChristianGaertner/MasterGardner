@@ -4,10 +4,8 @@
  */
 package mastergardner.entity.npc;
 
-import java.util.List;
-import java.util.ArrayList;
 import mastergardner.entity.Entity;
-import mastergardner.entity.projectile.KingProjectile;
+import mastergardner.entity.projectile.basic.Bomb;
 import mastergardner.entity.projectile.Projectile;
 import mastergardner.graphics.Sprite;
 
@@ -29,11 +27,11 @@ public abstract class NPC extends Entity {
      *
      */
     protected boolean moving = false;
-    
     /**
-     *
+     * 
      */
-    protected List<Projectile> projectiles = new ArrayList<Projectile>();
+    protected double running_speed;
+    
 
     /**
      * Move the NPC
@@ -74,6 +72,7 @@ public abstract class NPC extends Entity {
     public void update() {
     }
     
+    private int roft = 0;
     /**
      *
      * @param x
@@ -81,9 +80,11 @@ public abstract class NPC extends Entity {
      * @param dir
      */
     protected void shoot(int x, int y, double dir) {
-        Projectile p = new KingProjectile(x, y, dir);
-        projectiles.add(p);
-        level.add(p);
+        Projectile p = new Bomb(x, y, dir);
+        if (roft % p.getRateOfFire() == 0) {
+            level.addProjectile(p);
+        }
+        roft++;
     }
 
     private boolean collision(int xa, int ya) {

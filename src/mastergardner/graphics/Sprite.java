@@ -138,7 +138,11 @@ public class Sprite {
     /**
      *
      */
-    public static Sprite projectiles_king_basic = new Sprite(16, 0, 0, SpriteSheet.projectiles_king);
+    public static Sprite projectiles_basic_bomb = new Sprite(16, 0, 0, SpriteSheet.projectiles_basic);
+    /**
+     * 
+     */
+    public static Sprite projectiles_basic_bullet = new Sprite(16, 1, 0, SpriteSheet.projectiles_basic);
     
     
         

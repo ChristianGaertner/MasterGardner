@@ -26,7 +26,7 @@ public abstract class Entity {
     /**
      *
      */
-    protected final Random random= new Random();
+    protected static final Random random= new Random();
     
     
     /**

@@ -31,9 +31,9 @@ public class Keyboard implements KeyListener{
      */
     right,
     /**
-     * ALT || SUPER
+     * Shift
      */
-    alt;
+    shift;
     
     
     /**
@@ -44,8 +44,7 @@ public class Keyboard implements KeyListener{
         down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
         left = keys[KeyEvent.VK_LEFT] || keys[KeyEvent.VK_A];
         right = keys[KeyEvent.VK_RIGHT] || keys[KeyEvent.VK_D];
-        alt = keys[KeyEvent.VK_ALT];
-                             
+        shift = keys[KeyEvent.VK_SHIFT];                             
     }
 
     /**

@@ -5,6 +5,7 @@
 package mastergardner.entity.npc;
 
 import mastergardner.Game;
+import mastergardner.entity.projectile.Projectile;
 import mastergardner.graphics.Screen;
 import mastergardner.graphics.Sprite;
 import mastergardner.input.Keyboard;
@@ -30,6 +31,7 @@ public class Player extends NPC {
         this.walking = false;
         this.anim = 0;
         this.input = input;
+        this.running_speed = 1;
     }
 
     /**
@@ -45,6 +47,7 @@ public class Player extends NPC {
         this.x = x;
         this.y = y;
         this.input = input;
+        this.running_speed = 1;
     }
 
     /**
@@ -65,15 +68,27 @@ public class Player extends NPC {
 
         if (input.up) {
             ya--;
+            if (input.shift) {
+                ya -= running_speed;
+            }
         }
         if (input.down) {
             ya++;
+            if (input.shift) {
+                ya += running_speed;
+            }
         }
         if (input.left) {
             xa--;
+            if (input.shift) {
+                xa -= running_speed;
+            }
         }
         if (input.right) {
             xa++;
+            if (input.shift) {
+                xa += running_speed;
+            }
         }
 
         if (xa != 0 || ya != 0) {
@@ -83,6 +98,7 @@ public class Player extends NPC {
             walking = false;
         }
 
+        clear();
         updateShooting();
 
     }
@@ -150,5 +166,14 @@ public class Player extends NPC {
             flip = 1;
         }
         screen.renderPlayer(x - 16, y - 16, sprite, flip); //-16 in order to center player
+    }
+
+    private void clear() {
+        for (int i = 0; i < level.getProjectiles().size(); i++) {
+            Projectile p = level.getProjectiles().get(i);
+            if (p.isRemoved()) {
+                level.getProjectiles().remove(i);
+            }
+        }
     }
 }

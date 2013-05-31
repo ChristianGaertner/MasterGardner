@@ -101,7 +101,7 @@ public class Screen {
      *
      * @param xp
      * @param yp
-     * @param sprite
+     * @param p  
      */
     public void renderProjectile(int xp, int yp, Projectile p) {
         xp -= xOffset;
