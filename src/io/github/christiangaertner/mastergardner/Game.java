@@ -2,6 +2,7 @@ package io.github.christiangaertner.mastergardner;
 
 import io.github.christiangaertner.mastergardner.entity.npc.Player;
 import io.github.christiangaertner.mastergardner.graphics.Screen;
+import io.github.christiangaertner.mastergardner.graphics.Sprite;
 import io.github.christiangaertner.mastergardner.input.Keyboard;
 import io.github.christiangaertner.mastergardner.input.Mouse;
 import io.github.christiangaertner.mastergardner.level.Level;
@@ -197,7 +198,8 @@ public class Game extends Canvas implements Runnable {
         //rendering...
         level.render(xScroll, yScroll, screen);
         player.render(screen);
-
+        
+//        screen.renderSprite(300, 11, new Sprite(80, 200, 0xff00ff), true);
 
         //copy pixels from Screen class to BufferedImage array
         System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
@@ -206,10 +208,10 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-
+        
         g.setColor(Color.WHITE);
         g.setFont(new Font("Verdana", 0, 50));
-
+        
         g.dispose();
         bs.show();
     }
