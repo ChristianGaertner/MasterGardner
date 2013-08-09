@@ -136,6 +136,7 @@ public class Level {
      * @param p
      */
     public void addProjectile(Projectile p) {
+        p.init(this);
         projectiles.add(p);
     }
 
@@ -164,5 +165,21 @@ public class Level {
         }
 
         return Tile.voidTile;
+    }
+
+    public boolean tileCollision(double x, double y, double xa, double ya, int size) {
+        int xt;
+        int yt;
+
+        for (int c = 0; c < 4; c++) {
+            xt = (((int) x + (int) xa) + c % 2 * size / 2 - 5) / 16;
+            yt = (((int) y + (int) ya) + c / 2 * size / 2 + 6) / 16;
+            if (getTile(xt, yt).solid()) {
+                return true;
+            }
+        }
+        //else
+        return false;
+
     }
 }
