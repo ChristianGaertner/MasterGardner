@@ -96,11 +96,10 @@ public abstract class Projectile extends Entity {
      * @param ny
      */
     protected void move(double nx, double ny) {
-        if (!level.tileCollision(x, y, nx, ny, 7)) {
-            this.x += nx;
-            this.y += ny;
-        }
-        
+        if (level.tileCollision(x, y, nx, ny, 7)) remove();
+
+        this.x += nx;
+        this.y += ny;
         if (distance() > range) {
             remove();
         }

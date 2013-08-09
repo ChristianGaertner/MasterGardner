@@ -20,8 +20,8 @@ public class Bomb extends Projectile {
         super(x, y, dir);
         range = random.nextInt(100) + 150;
         damage = 20;
-        speed = 8;
-        rateOfFire = 7;
+        speed = 1;
+        rateOfFire = 50;
 
         sprite = Sprite.projectiles_basic_bomb;
 

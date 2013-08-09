@@ -84,6 +84,9 @@ public abstract class NPC extends Entity {
         if (roft % p.getRateOfFire() == 0) {
             level.addProjectile(p);
         }
+        if (roft > 6000) {
+            roft = 0;
+        }
         roft++;
     }
 
