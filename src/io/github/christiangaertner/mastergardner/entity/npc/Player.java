@@ -66,27 +66,27 @@ public class Player extends NPC {
             anim = 0;
         }
 
-        if (input.up) {
+        if (input.isKeyDown("up")) {
             ya--;
-            if (input.shift) {
+            if (input.isKeyDown("shift")) {
                 ya -= running_speed;
             }
         }
-        if (input.down) {
+        if (input.isKeyDown("down")) {
             ya++;
-            if (input.shift) {
+            if (input.isKeyDown("shift")) {
                 ya += running_speed;
             }
         }
-        if (input.left) {
+        if (input.isKeyDown("left")) {
             xa--;
-            if (input.shift) {
+            if (input.isKeyDown("shift")) {
                 xa -= running_speed;
             }
         }
-        if (input.right) {
+        if (input.isKeyDown("right")) {
             xa++;
-            if (input.shift) {
+            if (input.isKeyDown("shift")) {
                 xa += running_speed;
             }
         }

@@ -2,7 +2,6 @@ package io.github.christiangaertner.mastergardner;
 
 import io.github.christiangaertner.mastergardner.entity.npc.Player;
 import io.github.christiangaertner.mastergardner.graphics.Screen;
-import io.github.christiangaertner.mastergardner.graphics.Sprite;
 import io.github.christiangaertner.mastergardner.input.Keyboard;
 import io.github.christiangaertner.mastergardner.input.Mouse;
 import io.github.christiangaertner.mastergardner.level.Level;
@@ -170,7 +169,6 @@ public class Game extends Canvas implements Runnable {
      *
      */
     public void update() {
-        key.update();
         player.update();
         level.update();
     }

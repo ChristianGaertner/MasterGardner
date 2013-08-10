@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.christiangaertner.mastergardner.input;
 
 import java.awt.event.MouseEvent;
@@ -13,11 +9,11 @@ import java.awt.event.MouseMotionListener;
  * @author Christian
  */
 public class Mouse implements MouseListener, MouseMotionListener {
-    
+
     private static int mouseX = -1;
     private static int mouseY = -1;
     private static int mouseB = -1;
-    
+
     /**
      *
      * @return
@@ -25,7 +21,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
     public static int getX() {
         return mouseX;
     }
-    
+
     /**
      *
      * @return
@@ -33,7 +29,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
     public static int getY() {
         return mouseY;
     }
-    
+
     /**
      *
      * @return
@@ -41,8 +37,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
     public static int getButton() {
         return mouseB;
     }
-    
-    
+
     /**
      *
      * @param me
@@ -104,6 +99,4 @@ public class Mouse implements MouseListener, MouseMotionListener {
         mouseX = me.getX();
         mouseY = me.getY();
     }
-
-
 }
