@@ -24,14 +24,21 @@ public abstract class NPC extends Entity {
      */
     protected int dir = 2;
     /**
-     *
+     * Whether the player is moving
      */
     protected boolean moving = false;
     /**
-     * 
+     * The running sped of the player
      */
     protected double running_speed;
-    
+    /**
+     *
+     */
+    private int roftControll = 0;
+    /**
+     * 
+     */
+    private boolean roftIdle = true;
 
     /**
      * Move the NPC
@@ -70,9 +77,17 @@ public abstract class NPC extends Entity {
      */
     @Override
     public void update() {
+        if (!roftIdle) {
+            roftControll++;
+            Projectile p = new Bomb(0, 0, 0);
+            if (roftControll % p.getRateOfFire() == 0) {
+                roftIdle = true;
+                roftControll = (int) p.getRateOfFire();
+            }
+        }
+        
     }
-    
-    private int roft = 0;
+
     /**
      *
      * @param x
@@ -80,14 +95,14 @@ public abstract class NPC extends Entity {
      * @param dir
      */
     protected void shoot(int x, int y, double dir) {
+        roftIdle = false;
         Projectile p = new Bomb(x, y, dir);
-        if (roft % p.getRateOfFire() == 0) {
+        if (roftControll % p.getRateOfFire() == 0) {
             level.addProjectile(p);
         }
-        if (roft > 6000) {
-            roft = 0;
+        if (roftControll > 6000) {
+            roftControll = 0;
         }
-        roft++;
     }
 
     private boolean collision(int xa, int ya) {

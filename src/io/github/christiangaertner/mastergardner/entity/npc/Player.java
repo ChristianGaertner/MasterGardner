@@ -55,6 +55,7 @@ public class Player extends NPC {
      */
     @Override
     public void update() {
+        super.update();
         int xa;
         xa = 0;
         int ya;
