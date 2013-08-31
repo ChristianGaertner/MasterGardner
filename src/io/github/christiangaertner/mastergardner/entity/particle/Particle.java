@@ -32,7 +32,7 @@ public class Particle extends Entity {
     public Particle(int x, int y, int lifetime, int amount) {
         this(x, y, lifetime);
         for (int i = 1; i < amount; i++) {
-            particles.add(new Particle(x, y, lifetime);
+            particles.add(new Particle(x, y, lifetime));
         }
         particles.add(this);
     }
