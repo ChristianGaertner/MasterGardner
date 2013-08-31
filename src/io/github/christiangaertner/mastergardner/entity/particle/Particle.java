@@ -21,6 +21,8 @@ public class Particle extends Entity {
         this.y = y;
         sprite = Sprite.particle_basic;
 
+        this.xa = random.nextGaussian();
+        this.ya = random.nextGaussian();
     }
 
     public Particle(int x, int y, int lifetime, int amount) {
@@ -30,12 +32,15 @@ public class Particle extends Entity {
         }
         particles.add(this);
     }
-    
+
     @Override
     public void update() {
+        this.xx += xa;
+        this.yy += ya;
     }
-    
+
     @Override
-    public void render(Renderer screen) {
+    public void render(Renderer renderer) {
+        renderer.renderSprite((int) xx, (int) yy, sprite, true);
     }
 }
