@@ -127,6 +127,12 @@ public class Sprite {
      *
      */
     public static Sprite projectiles_basic_bullet = new Sprite(16, 1, 0, SpriteSheet.projectiles_basic);
+    
+    /**
+     * 
+     */
+    public static Sprite particle_basic = new Sprite(3, 0xAAAAAA);
+    
     //PLAYER
     /**
      *

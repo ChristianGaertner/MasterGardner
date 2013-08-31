@@ -5,6 +5,7 @@
 package io.github.christiangaertner.mastergardner.entity;
 
 import io.github.christiangaertner.mastergardner.graphics.Screen;
+import io.github.christiangaertner.mastergardner.graphics.Sprite;
 import io.github.christiangaertner.mastergardner.level.Level;
 import java.util.Random;
 
@@ -23,6 +24,10 @@ public abstract class Entity {
      *
      */
     protected Level level;
+    /**
+     * 
+     */
+    protected Sprite sprite;
     /**
      *
      */

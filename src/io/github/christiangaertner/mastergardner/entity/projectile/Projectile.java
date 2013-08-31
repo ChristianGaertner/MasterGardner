@@ -25,10 +25,6 @@ public abstract class Projectile extends Entity {
     /**
      *
      */
-    protected Sprite sprite;
-    /**
-     *
-     */
     protected double x,
             /**
              *

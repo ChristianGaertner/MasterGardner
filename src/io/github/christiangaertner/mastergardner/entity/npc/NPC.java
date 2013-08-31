@@ -7,7 +7,6 @@ package io.github.christiangaertner.mastergardner.entity.npc;
 import io.github.christiangaertner.mastergardner.entity.Entity;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
 import io.github.christiangaertner.mastergardner.entity.projectile.basic.Bomb;
-import io.github.christiangaertner.mastergardner.graphics.Sprite;
 
 /**
  *
@@ -15,10 +14,6 @@ import io.github.christiangaertner.mastergardner.graphics.Sprite;
  */
 public abstract class NPC extends Entity {
 
-    /**
-     * The assoc sprite for the npc
-     */
-    protected Sprite sprite;
     /**
      * the direction (used for switching sprites
      */
