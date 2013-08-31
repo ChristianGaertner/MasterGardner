@@ -1,5 +1,6 @@
 package io.github.christiangaertner.mastergardner.entity.projectile.basic;
 
+import io.github.christiangaertner.mastergardner.entity.particle.Particle;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
 import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.graphics.Sprite;
@@ -18,7 +19,7 @@ public class Bomb extends Projectile {
      */
     public Bomb(int x, int y, double dir) {
         super(x, y, dir);
-        range = random.nextInt(100) + 150;
+        range = random.nextInt(50) + 50;
         damage = 20;
         speed = 1;
         rateOfFire = 50;
@@ -29,16 +30,17 @@ public class Bomb extends Projectile {
         ny = speed * Math.sin(angle);
     }
 
-    @Override
-    public void update() {
-        move(nx, ny);
-    }
-
     /**
      *
      */
     @Override
     public void render(Renderer screen) {
         screen.renderProjectile((int) x - 12, (int) y - 2, this);
+    }
+
+    @Override
+    protected void onCollision() {
+        Particle p = new Particle((int) x, (int) y, 2, 50);
+        level.add(p);
     }
 }

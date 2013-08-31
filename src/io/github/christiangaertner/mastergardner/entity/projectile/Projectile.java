@@ -92,13 +92,21 @@ public abstract class Projectile extends Entity {
      * @param ny
      */
     protected void move(double nx, double ny) {
-        if (level.tileCollision(x, y, nx, ny, 7)) remove();
+        if (level.tileCollision(x, y, nx, ny, 7)) {
+            remove();
+            onCollision();
+        }
 
         this.x += nx;
         this.y += ny;
         if (distance() > range) {
             remove();
         }
+    }
+    
+    @Override
+    public void update() {
+        move(nx, ny);
     }
 
     protected double distance() {
@@ -111,5 +119,14 @@ public abstract class Projectile extends Entity {
      */
     public double getRateOfFire() {
         return rateOfFire;
+    }
+    
+    /**
+     * Gets called on collision,
+     * the entity has been removed.
+     * (You can override this by doing this:)
+     * this.removed = false;
+     */
+    protected void onCollision() {
     }
 }

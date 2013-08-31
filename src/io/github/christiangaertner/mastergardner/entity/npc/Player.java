@@ -99,7 +99,6 @@ public class Player extends NPC {
             walking = false;
         }
 
-        clear();
         updateShooting();
 
     }
@@ -167,14 +166,5 @@ public class Player extends NPC {
             flip = 1;
         }
         screen.renderPlayer(x - 16, y - 16, sprite, flip); //-16 in order to center player
-    }
-
-    private void clear() {
-        for (int i = 0; i < level.getProjectiles().size(); i++) {
-            Projectile p = level.getProjectiles().get(i);
-            if (p.isRemoved()) {
-                level.getProjectiles().remove(i);
-            }
-        }
     }
 }

@@ -19,7 +19,7 @@ public abstract class Entity {
      * Position of the Entity
      */
     public int x, y;
-    private boolean removed = false;
+    protected boolean removed = false;
     /**
      *
      */

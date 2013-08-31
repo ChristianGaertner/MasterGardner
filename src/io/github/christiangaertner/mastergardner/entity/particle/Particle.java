@@ -13,12 +13,16 @@ import java.util.List;
 public class Particle extends Entity {
 
     protected List<Particle> particles = new ArrayList<Particle>();
-    protected int life;
-    protected double xx, yy, xa, ya;
+    public int updates = 0;
+    protected int lifetime;
+    protected double x, y, xa, ya;
 
     public Particle(int x, int y, int lifetime) {
         this.x = x;
         this.y = y;
+        
+        this.lifetime = lifetime * 60;
+
         sprite = Sprite.particle_basic;
 
         this.xa = random.nextGaussian();
@@ -27,20 +31,32 @@ public class Particle extends Entity {
 
     public Particle(int x, int y, int lifetime, int amount) {
         this(x, y, lifetime);
-        for (int i = 0; i < amount; i++) {
-            particles.add(new Particle(x, y, lifetime));
+        for (int i = 1; i < amount; i++) {
+            particles.add(new Particle(x, y, lifetime);
         }
         particles.add(this);
     }
 
     @Override
     public void update() {
-        this.xx += xa;
-        this.yy += ya;
+        for (Particle p : particles) {
+            p.x += p.xa;
+            p.y += p.ya;
+            p.updates++;
+            if (p.updates > p.getLifeTime()) {
+                p.remove();
+            }
+        }
     }
 
     @Override
     public void render(Renderer renderer) {
-        renderer.renderSprite((int) xx, (int) yy, sprite, true);
+        for (Particle p : particles) {
+            renderer.renderSprite((int) p.x, (int) p.y, p.sprite, false);
+        }
+    }
+    
+    public int getLifeTime() {
+        return lifetime;
     }
 }

@@ -84,6 +84,7 @@ public class Level {
         for (int i = 0; i < projectiles.size(); i++) {
             projectiles.get(i).update();
         }
+        clear();
 
     }
 
@@ -181,5 +182,28 @@ public class Level {
         //else
         return false;
 
+    }
+    
+    private void clear() {
+        clearProjectiles();
+        clearEntities();
+    }
+    
+    private void clearProjectiles() {
+        for (int i = 0; i < projectiles.size(); i++) {
+            Projectile p = projectiles.get(i);
+            if (p.isRemoved()) {
+                projectiles.remove(i);
+            }
+        }
+    }
+    
+    private void clearEntities() {
+        for (int i = 0; i < entities.size(); i++) {
+            Entity e = entities.get(i);
+            if (e.isRemoved()) {
+                entities.remove(i);
+            }
+        }
     }
 }
