@@ -1,6 +1,7 @@
 package io.github.christiangaertner.mastergardner.entity.particle;
 
 import io.github.christiangaertner.mastergardner.entity.Entity;
+import io.github.christiangaertner.mastergardner.graphics.Screen;
 import io.github.christiangaertner.mastergardner.graphics.Sprite;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,5 +29,13 @@ public class Particle extends Entity {
             particles.add(new Particle(x, y, lifetime));
         }
         particles.add(this);
+    }
+    
+    @Override
+    public void update() {
+    }
+    
+    @Override
+    public void render(Screen screen) {
     }
 }
