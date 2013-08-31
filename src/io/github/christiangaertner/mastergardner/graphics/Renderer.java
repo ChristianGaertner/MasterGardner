@@ -12,10 +12,10 @@ import java.util.Random;
  *
  * @author Christian
  */
-public class Screen {
+public class Renderer {
     
     /**
-     * Screen Height & Width
+     * Renderer Height & Width
      */
     public int width, height;
     /**
@@ -52,7 +52,7 @@ public class Screen {
      * @param width
      * @param height
      */
-    public Screen(int width, int height) {
+    public Renderer(int width, int height) {
         
         this.random = new Random();
         

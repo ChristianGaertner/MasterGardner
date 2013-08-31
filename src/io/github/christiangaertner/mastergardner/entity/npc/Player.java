@@ -6,7 +6,7 @@ package io.github.christiangaertner.mastergardner.entity.npc;
 
 import io.github.christiangaertner.mastergardner.Game;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
-import io.github.christiangaertner.mastergardner.graphics.Screen;
+import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.graphics.Sprite;
 import io.github.christiangaertner.mastergardner.input.Keyboard;
 import io.github.christiangaertner.mastergardner.input.Mouse;
@@ -119,7 +119,7 @@ public class Player extends NPC {
      * @param screen
      */
     @Override
-    public void render(Screen screen) {
+    public void render(Renderer screen) {
         int flip;
         flip = 0;
 

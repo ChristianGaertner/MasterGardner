@@ -4,7 +4,7 @@
  */
 package io.github.christiangaertner.mastergardner.entity;
 
-import io.github.christiangaertner.mastergardner.graphics.Screen;
+import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.graphics.Sprite;
 import io.github.christiangaertner.mastergardner.level.Level;
 import java.util.Random;
@@ -43,7 +43,7 @@ public abstract class Entity {
      *
      * @param screen
      */
-    public void render(Screen screen) {
+    public void render(Renderer screen) {
     }
 
     /**

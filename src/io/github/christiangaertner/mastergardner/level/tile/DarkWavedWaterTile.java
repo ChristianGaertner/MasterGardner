@@ -4,7 +4,7 @@
  */
 package io.github.christiangaertner.mastergardner.level.tile;
 
-import io.github.christiangaertner.mastergardner.graphics.Screen;
+import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.graphics.Sprite;
 
 /**
@@ -22,7 +22,7 @@ public class DarkWavedWaterTile extends Tile {
     }
 
     @Override
-    public void render(int x, int y, Screen screen) {
+    public void render(int x, int y, Renderer screen) {
         screen.renderTile(x << 4, y << 4, this);
     }
 }

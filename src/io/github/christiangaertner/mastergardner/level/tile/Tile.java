@@ -4,7 +4,7 @@
  */
 package io.github.christiangaertner.mastergardner.level.tile;
 
-import io.github.christiangaertner.mastergardner.graphics.Screen;
+import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.graphics.Sprite;
 
 /**
@@ -172,7 +172,7 @@ public class Tile {
      * @param y
      * @param screen
      */
-    public void render(int x, int y, Screen screen) {
+    public void render(int x, int y, Renderer screen) {
     }
     
     /**

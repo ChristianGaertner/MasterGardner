@@ -1,7 +1,7 @@
 package io.github.christiangaertner.mastergardner;
 
 import io.github.christiangaertner.mastergardner.entity.npc.Player;
-import io.github.christiangaertner.mastergardner.graphics.Screen;
+import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.input.Keyboard;
 import io.github.christiangaertner.mastergardner.input.Mouse;
 import io.github.christiangaertner.mastergardner.level.Level;
@@ -46,7 +46,7 @@ public class Game extends Canvas implements Runnable {
     private Level level;
     private Player player;
     private boolean running = false;
-    private Screen screen;
+    private Renderer screen;
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
@@ -58,7 +58,7 @@ public class Game extends Canvas implements Runnable {
         size = new Dimension(width * scale, height * scale);
         setPreferredSize(size);
 
-        screen = new Screen(width, height);
+        screen = new Renderer(width, height);
         frame = new JFrame();
         key = new Keyboard();
         mouse = new Mouse();
@@ -199,7 +199,7 @@ public class Game extends Canvas implements Runnable {
         
 //        screen.renderSprite(300, 11, new Sprite(80, 200, 0xff00ff), true);
 
-        //copy pixels from Screen class to BufferedImage array
+        //copy pixels from Renderer class to BufferedImage array
         System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
 
         Graphics g = bs.getDrawGraphics();

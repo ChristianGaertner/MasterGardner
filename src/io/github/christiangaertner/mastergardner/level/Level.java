@@ -6,7 +6,7 @@ package io.github.christiangaertner.mastergardner.level;
 
 import io.github.christiangaertner.mastergardner.entity.Entity;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
-import io.github.christiangaertner.mastergardner.graphics.Screen;
+import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.level.tile.Tile;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,7 +98,7 @@ public class Level {
      * @param yScroll
      * @param screen
      */
-    public void render(int xScroll, int yScroll, Screen screen) {
+    public void render(int xScroll, int yScroll, Renderer screen) {
         screen.setOffset(xScroll, yScroll);
 
         int x0, y0, x1, y1;
