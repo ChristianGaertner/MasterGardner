@@ -5,7 +5,6 @@
 package io.github.christiangaertner.mastergardner.entity.npc;
 
 import io.github.christiangaertner.mastergardner.Game;
-import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
 import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.graphics.Sprite;
 import io.github.christiangaertner.mastergardner.input.Keyboard;

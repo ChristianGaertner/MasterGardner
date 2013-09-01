@@ -7,8 +7,6 @@ package io.github.christiangaertner.mastergardner.entity.npc;
 import io.github.christiangaertner.mastergardner.entity.Entity;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile.ProjectileType;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -37,6 +35,8 @@ public abstract class NPC extends Entity {
      */
     private boolean roftIdle = true;
     private ProjectileType projectileType = ProjectileType.BOMB;
+    
+    protected int fired = 0;
 
     /**
      * Move the NPC
@@ -97,6 +97,7 @@ public abstract class NPC extends Entity {
         Projectile p = ProjectileType.getProjectile(this.projectileType, x, y, dir);
         if (roftControll % p.getRateOfFire() == 0) {
             level.addProjectile(p);
+            fired++;
         }
         if (roftControll > 6000) {
             roftControll = 0;
@@ -125,6 +126,10 @@ public abstract class NPC extends Entity {
     
     public void setProjectile(ProjectileType t) {
         this.projectileType = t;
+    }
+    
+    public int getTimesFired() {
+        return fired;
     }
 
     /**
