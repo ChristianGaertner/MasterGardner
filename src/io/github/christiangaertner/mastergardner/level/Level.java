@@ -5,6 +5,7 @@
 package io.github.christiangaertner.mastergardner.level;
 
 import io.github.christiangaertner.mastergardner.entity.Entity;
+import io.github.christiangaertner.mastergardner.entity.particle.Particle;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
 import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.level.tile.Tile;
@@ -129,6 +130,12 @@ public class Level {
      */
     public void add(Entity entity) {
         entities.add(entity);
+    }
+    
+    public void add(List<Entity> entities) {
+        for (Entity e : entities) {
+            this.add(e);
+        }
     }
 
     /**

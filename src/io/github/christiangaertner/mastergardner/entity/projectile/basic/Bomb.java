@@ -1,6 +1,9 @@
 package io.github.christiangaertner.mastergardner.entity.projectile.basic;
 
+import io.github.christiangaertner.mastergardner.entity.Entity;
 import io.github.christiangaertner.mastergardner.entity.particle.Particle;
+import io.github.christiangaertner.mastergardner.entity.particle.ParticleEmitter;
+import io.github.christiangaertner.mastergardner.entity.particle.ParticleEmitter.ParticleType;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
 import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.graphics.Sprite;
@@ -40,7 +43,7 @@ public class Bomb extends Projectile {
 
     @Override
     protected void onCollision() {
-        Particle p = new Particle((int) x, (int) y, 2, 50);
-        level.add(p);
+        ParticleEmitter emitter = new ParticleEmitter(ParticleType.BASIC, (int) x, (int) y, 2, 50);
+        level.add(emitter.getParticles());
     }
 }
