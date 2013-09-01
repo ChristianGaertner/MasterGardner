@@ -5,6 +5,7 @@
 package io.github.christiangaertner.mastergardner.level;
 
 import io.github.christiangaertner.mastergardner.entity.Entity;
+import io.github.christiangaertner.mastergardner.entity.npc.Player;
 import io.github.christiangaertner.mastergardner.entity.particle.Particle;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
 import io.github.christiangaertner.mastergardner.graphics.Renderer;
@@ -31,6 +32,7 @@ public class Level {
      */
     protected int[] tiles;
     private List<Entity> entities = new ArrayList<Entity>();
+    private List<Player> players = new ArrayList<Player>();
     private List<Projectile> projectiles = new ArrayList<Projectile>();
     /**
      * The spawn level 40 * 75
@@ -76,9 +78,12 @@ public class Level {
     }
 
     /**
-     * Update all entities and projectiles
+     * Update all players, entities and projectiles
      */
     public void update() {
+        for (int i = 0; i < players.size(); i++) {
+            players.get(i).update();
+        }
         for (int i = 0; i < entities.size(); i++) {
             entities.get(i).update();
         }
@@ -115,12 +120,24 @@ public class Level {
             }
 
         }
+
         for (int i = 0; i < entities.size(); i++) {
             entities.get(i).render(screen);
         }
         for (int i = 0; i < projectiles.size(); i++) {
             projectiles.get(i).render(screen);
         }
+        for (int i = 0; i < players.size(); i++) {
+            players.get(i).render(screen);
+        }
+    }
+    
+    /**
+     * Add a player to the level
+     * @param p 
+     */
+    public void addPlayer(Player p) {
+        players.add(p);
     }
 
     /**
@@ -132,6 +149,10 @@ public class Level {
         entities.add(entity);
     }
     
+    /**
+     * Add many Entities to the level
+     * @param entities 
+     */
     public void add(List<Entity> entities) {
         for (Entity e : entities) {
             this.add(e);
@@ -194,6 +215,7 @@ public class Level {
     private void clear() {
         clearProjectiles();
         clearEntities();
+        clearPlayers();
     }
     
     private void clearProjectiles() {
@@ -210,6 +232,15 @@ public class Level {
             Entity e = entities.get(i);
             if (e.isRemoved()) {
                 entities.remove(i);
+            }
+        }
+    }
+    
+    private void clearPlayers() {
+        for (int i = 0; i < players.size(); i++) {
+            Entity e = players.get(i);
+            if (e.isRemoved()) {
+                players.remove(i);
             }
         }
     }

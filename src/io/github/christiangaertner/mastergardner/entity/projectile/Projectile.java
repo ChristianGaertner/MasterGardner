@@ -1,6 +1,8 @@
 package io.github.christiangaertner.mastergardner.entity.projectile;
 
 import io.github.christiangaertner.mastergardner.entity.Entity;
+import io.github.christiangaertner.mastergardner.entity.projectile.basic.Bomb;
+import io.github.christiangaertner.mastergardner.entity.projectile.basic.Bullet;
 import io.github.christiangaertner.mastergardner.graphics.Sprite;
 import java.util.Random;
 
@@ -10,6 +12,26 @@ import java.util.Random;
  */
 public abstract class Projectile extends Entity {
 
+    public enum ProjectileType {
+        BOMB, BULLET;
+
+        public static Projectile getProjectile(ProjectileType type, int x, int y, double dir) {
+            switch(type) {
+                case BOMB:
+                    return new Bomb(x, y, dir);
+                default:
+                /** Falls thru **/
+                case BULLET:
+                    return new Bullet(x, y, dir);
+                
+            }
+        }
+
+        public ProjectileType getNext() {
+            return values()[(ordinal()+1) % values().length];
+        }
+    }
+    
     /**
      *
      */
@@ -122,11 +144,31 @@ public abstract class Projectile extends Entity {
     }
     
     /**
+     *
+     */
+    @Override
+    public void remove() {
+        removed = true;
+        onRemoving();
+    }
+    
+    /**
+     * @EVENTSYSTEM
      * Gets called on collision,
      * the entity has been removed.
      * (You can override this by doing this:)
      * this.removed = false;
      */
     protected void onCollision() {
+    }
+    
+    /**
+     * @EVENTSYSTEM
+     * Gets called when the projectile gets removed
+     * the entity has been removed.
+     * (You can override this by doing this:)
+     * this.removed = false;
+     */
+    protected void onRemoving() {
     }
 }

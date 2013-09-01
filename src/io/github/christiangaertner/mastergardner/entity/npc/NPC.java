@@ -6,7 +6,9 @@ package io.github.christiangaertner.mastergardner.entity.npc;
 
 import io.github.christiangaertner.mastergardner.entity.Entity;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
-import io.github.christiangaertner.mastergardner.entity.projectile.basic.Bomb;
+import io.github.christiangaertner.mastergardner.entity.projectile.Projectile.ProjectileType;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +36,7 @@ public abstract class NPC extends Entity {
      * 
      */
     private boolean roftIdle = true;
+    private ProjectileType projectileType = ProjectileType.BOMB;
 
     /**
      * Move the NPC
@@ -74,7 +77,7 @@ public abstract class NPC extends Entity {
     public void update() {
         if (!roftIdle) {
             roftControll++;
-            Projectile p = new Bomb(0, 0, 0);
+            Projectile p = ProjectileType.getProjectile(this.projectileType, 0, 0, 0);
             if (roftControll % p.getRateOfFire() == 0) {
                 roftIdle = true;
                 roftControll = (int) p.getRateOfFire();
@@ -91,7 +94,7 @@ public abstract class NPC extends Entity {
      */
     protected void shoot(int x, int y, double dir) {
         roftIdle = false;
-        Projectile p = new Bomb(x, y, dir);
+        Projectile p = ProjectileType.getProjectile(this.projectileType, x, y, dir);
         if (roftControll % p.getRateOfFire() == 0) {
             level.addProjectile(p);
         }
@@ -114,6 +117,14 @@ public abstract class NPC extends Entity {
         //else
         return false;
 
+    }
+    
+    public ProjectileType getProjectile() {
+        return this.projectileType;
+    }
+    
+    public void setProjectile(ProjectileType t) {
+        this.projectileType = t;
     }
 
     /**

@@ -1,6 +1,7 @@
 package io.github.christiangaertner.mastergardner;
 
 import io.github.christiangaertner.mastergardner.entity.npc.Player;
+import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
 import io.github.christiangaertner.mastergardner.graphics.Renderer;
 import io.github.christiangaertner.mastergardner.input.Keyboard;
 import io.github.christiangaertner.mastergardner.input.Mouse;
@@ -66,7 +67,8 @@ public class Game extends Canvas implements Runnable {
         TileCoordinate playerSpawn = new TileCoordinate(20, 65);
         player = new Player(playerSpawn.x(), playerSpawn.y(), key);
         player.init(level);
-
+        player.setProjectile(Projectile.ProjectileType.BULLET);
+        level.addPlayer(player);
         addKeyListener(key);
         addMouseListener(mouse);
         addMouseMotionListener(mouse);
@@ -169,7 +171,6 @@ public class Game extends Canvas implements Runnable {
      *
      */
     public void update() {
-        player.update();
         level.update();
     }
 
@@ -195,7 +196,6 @@ public class Game extends Canvas implements Runnable {
 
         //rendering...
         level.render(xScroll, yScroll, screen);
-        player.render(screen);
 
 //        screen.renderSprite(300, 11, new Sprite(80, 200, 0xff00ff), true);
 

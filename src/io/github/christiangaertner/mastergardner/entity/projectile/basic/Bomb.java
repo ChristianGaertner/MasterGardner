@@ -42,7 +42,7 @@ public class Bomb extends Projectile {
     }
 
     @Override
-    protected void onCollision() {
+    protected void onRemoving() {
         ParticleEmitter emitter = new ParticleEmitter(ParticleType.BASIC, (int) x, (int) y, 2, 50);
         level.add(emitter.getParticles());
     }
