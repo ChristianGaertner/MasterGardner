@@ -14,7 +14,6 @@ public class ParticleEmitter {
     protected static final Random RANDOM = new Random();
 
     public enum ParticleType {
-
         BASIC
     }
     protected List<Entity> particles = new ArrayList<Entity>();

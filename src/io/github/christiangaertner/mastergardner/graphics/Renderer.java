@@ -1,5 +1,5 @@
 /*
- * Render
+ * Renderer
  *
  */
 package io.github.christiangaertner.mastergardner.graphics;
@@ -15,7 +15,7 @@ import java.util.Random;
 public class Renderer {
     
     /**
-     * Renderer Height & Width
+     * Screen Height & Width
      */
     public int width, height;
     /**
