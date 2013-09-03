@@ -146,6 +146,7 @@ public class Level {
      * @param entity
      */
     public void add(Entity entity) {
+        entity.init(this);
         entities.add(entity);
     }
     
@@ -157,16 +158,6 @@ public class Level {
         for (Entity e : entities) {
             this.add(e);
         }
-    }
-
-    /**
-     * Add a Projectile to the level
-     *
-     * @param p
-     */
-    public void addProjectile(Projectile p) {
-        p.init(this);
-        projectiles.add(p);
     }
 
     /**

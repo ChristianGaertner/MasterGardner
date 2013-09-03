@@ -29,7 +29,7 @@ public abstract class NPC extends Entity {
     /**
      *
      */
-    private int roftControll = 0;
+    private long roftControll = System.currentTimeMillis();
     /**
      * 
      */
@@ -75,15 +75,6 @@ public abstract class NPC extends Entity {
      */
     @Override
     public void update() {
-        if (!roftIdle) {
-            roftControll++;
-            Projectile p = ProjectileType.getProjectile(this.projectileType, 0, 0, 0);
-            if (roftControll % p.getRateOfFire() == 0) {
-                roftIdle = true;
-                roftControll = (int) p.getRateOfFire();
-            }
-        }
-        
     }
 
     /**
@@ -93,14 +84,14 @@ public abstract class NPC extends Entity {
      * @param dir
      */
     protected void shoot(int x, int y, double dir) {
-        roftIdle = false;
+        
+        long now = System.currentTimeMillis();
+        
         Projectile p = ProjectileType.getProjectile(this.projectileType, x, y, dir);
-        if (roftControll % p.getRateOfFire() == 0) {
-            level.addProjectile(p);
-            fired++;
-        }
-        if (roftControll > 6000) {
-            roftControll = 0;
+        
+        if (now - roftControll > p.ROFT) {
+            level.add(p);
+            roftControll = now;
         }
     }
 

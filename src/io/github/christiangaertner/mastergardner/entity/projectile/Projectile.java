@@ -32,6 +32,8 @@ public abstract class Projectile extends Entity {
         }
     }
     
+    public final static long ROFT = -1;
+    
     /**
      *
      */
@@ -63,11 +65,7 @@ public abstract class Projectile extends Entity {
     /**
      *
      */
-    protected double speed,
-            /**
-             *
-             */
-            rateOfFire,
+    protected static double speed,
             /**
              *
              */
@@ -133,14 +131,6 @@ public abstract class Projectile extends Entity {
 
     protected double distance() {
         return Math.sqrt(Math.abs((xOrigin - x) * (xOrigin - x) + (yOrigin - y) * (yOrigin - y)));
-    }
-
-    /**
-     *
-     * @return
-     */
-    public double getRateOfFire() {
-        return rateOfFire;
     }
     
     /**

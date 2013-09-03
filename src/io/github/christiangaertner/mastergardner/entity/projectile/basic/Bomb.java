@@ -1,7 +1,5 @@
 package io.github.christiangaertner.mastergardner.entity.projectile.basic;
 
-import io.github.christiangaertner.mastergardner.entity.Entity;
-import io.github.christiangaertner.mastergardner.entity.particle.Particle;
 import io.github.christiangaertner.mastergardner.entity.particle.ParticleEmitter;
 import io.github.christiangaertner.mastergardner.entity.particle.ParticleEmitter.ParticleType;
 import io.github.christiangaertner.mastergardner.entity.projectile.Projectile;
@@ -14,6 +12,8 @@ import io.github.christiangaertner.mastergardner.graphics.Sprite;
  */
 public class Bomb extends Projectile {
 
+    public final static long ROFT = 1000/60;
+    
     /**
      *
      * @param x
@@ -25,7 +25,6 @@ public class Bomb extends Projectile {
         range = random.nextInt(50) + 50;
         damage = 20;
         speed = 1;
-        rateOfFire = 50;
 
         sprite = Sprite.projectiles_basic_bomb;
 

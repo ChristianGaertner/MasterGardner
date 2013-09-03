@@ -90,10 +90,6 @@ public class Player extends NPC {
                 xa += running_speed;
             }
         }
-        
-        if (input.isKeyDown("b")) {
-            setProjectile(getProjectile().getNext());
-        }
 
         if (xa != 0 || ya != 0) {
             move(xa, ya);

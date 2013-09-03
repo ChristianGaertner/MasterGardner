@@ -12,6 +12,8 @@ import io.github.christiangaertner.mastergardner.graphics.Sprite;
  */
 public class Bullet extends Projectile {
 
+    public final static long ROFT = 1000/60;
+    
     /**
      *
      * @param x
@@ -23,7 +25,6 @@ public class Bullet extends Projectile {
         range = random.nextInt(100) + 150;
         damage = 2;
         speed = 10;
-        rateOfFire = 5;
 
         sprite = Sprite.projectiles_basic_bullet;
 
