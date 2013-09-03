@@ -22,8 +22,8 @@ public class Particle extends Entity {
 
         sprite = Sprite.particle_basic;
 
-        this.xa = random.nextGaussian();
-        this.ya = random.nextGaussian();
+        this.xa = RANDOM.nextGaussian();
+        this.ya = RANDOM.nextGaussian();
     }
 
     @Override

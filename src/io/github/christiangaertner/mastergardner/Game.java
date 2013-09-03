@@ -22,7 +22,7 @@ import javax.swing.JFrame;
  *
  * @author Christian
  */
-public class Game extends Canvas implements Runnable {
+public final class Game extends Canvas implements Runnable {
 
     private static final long serialVersionUID = 1L;
     /**
@@ -40,7 +40,7 @@ public class Game extends Canvas implements Runnable {
     /**
      *
      */
-    public static String title = "MasterGardner";
+    public final static String TITLE = "MasterGardner";
     private Thread thread;
     private JFrame frame;
     private Keyboard key;
@@ -48,7 +48,7 @@ public class Game extends Canvas implements Runnable {
     private Level level;
     private Player player;
     private boolean running = false;
-    private Renderer screen;
+    private Renderer renderer;
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
@@ -59,8 +59,8 @@ public class Game extends Canvas implements Runnable {
         Dimension size;
         size = new Dimension(width * scale, height * scale);
         setPreferredSize(size);
-
-        screen = new Renderer(width, height);
+        
+        renderer = new Renderer(width, height);
         frame = new JFrame();
         key = new Keyboard();
         mouse = new Mouse();
@@ -68,7 +68,6 @@ public class Game extends Canvas implements Runnable {
         TileCoordinate playerSpawn = new TileCoordinate(20, 65);
         player = new Player(playerSpawn.x(), playerSpawn.y(), key);
         player.init(level);
-        player.setProjectile(Projectile.ProjectileType.BULLET);
         level.addPlayer(player);
         addKeyListener(key);
         addMouseListener(mouse);
@@ -158,7 +157,7 @@ public class Game extends Canvas implements Runnable {
             if (System.currentTimeMillis() - timer >= 1000) {
                 timer += 1000;
                 // System.out.println(updates + " ups, " + frames + " fps");
-                frame.setTitle(title + "  |  " + updates + " ups, " + frames + " fps");
+                frame.setTitle(TITLE + "  |  " + updates + " ups, " + frames + " fps");
                 updates = 0;
                 frames = 0;
             }
@@ -187,31 +186,34 @@ public class Game extends Canvas implements Runnable {
             return;
         }
 
-        screen.clear();
+        Graphics g = bs.getDrawGraphics();
+
+        
+        renderer.clear();
 
         //setting offsets...
         int xScroll;
-        xScroll = player.x - screen.width / 2;
+        xScroll = player.x - renderer.width / 2;
         int yScroll;
-        yScroll = player.y - screen.height / 2;
+        yScroll = player.y - renderer.height / 2;
 
         //rendering...
-        level.render(xScroll, yScroll, screen);
+        level.render(xScroll, yScroll, renderer);
 
-        screen.renderSprite(0, 0, new Sprite(70, 30, 0xaaaaaa), true);
 
         //copy pixels from Renderer class to BufferedImage array
-        System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
+        System.arraycopy(renderer.pixels, 0, pixels, 0, pixels.length);
 
-        Graphics g = bs.getDrawGraphics();
+
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("Verdana", 0, 50));
-        g.drawString(player.getProjectile().toString(), 5, 46);
-        g.drawString(">"+ player.getTimesFired(), 5, 86);
+        
+        g.drawString("Debug", 50, 50);
+        
         g.dispose();
         bs.show();
     }
@@ -225,7 +227,7 @@ public class Game extends Canvas implements Runnable {
 
         //JFrame stuff
         game.frame.setResizable(false);
-        game.frame.setTitle(Game.title);
+        game.frame.setTitle(Game.TITLE);
         game.frame.add(game);
         game.frame.pack();
         game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

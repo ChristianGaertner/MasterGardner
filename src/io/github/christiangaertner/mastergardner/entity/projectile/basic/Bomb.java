@@ -11,8 +11,6 @@ import io.github.christiangaertner.mastergardner.graphics.Sprite;
  * @author Christian
  */
 public class Bomb extends Projectile {
-
-    public final static long ROFT = 1000/60;
     
     /**
      *
@@ -22,10 +20,12 @@ public class Bomb extends Projectile {
      */
     public Bomb(int x, int y, double dir) {
         super(x, y, dir);
-        range = random.nextInt(50) + 50;
+        range = RANDOM.nextInt(50) + 50;
         damage = 20;
         speed = 1;
 
+        roft = 1000;
+        
         sprite = Sprite.projectiles_basic_bomb;
 
         nx = speed * Math.cos(angle);

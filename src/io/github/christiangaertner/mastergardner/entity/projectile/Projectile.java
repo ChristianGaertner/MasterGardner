@@ -32,8 +32,6 @@ public abstract class Projectile extends Entity {
         }
     }
     
-    public final static long ROFT = -1;
-    
     /**
      *
      */
@@ -74,7 +72,7 @@ public abstract class Projectile extends Entity {
              *
              */
             damage;
-    protected static final Random random = new Random();
+    protected static long roft = -1;
 
     /**
      *
@@ -140,6 +138,14 @@ public abstract class Projectile extends Entity {
     public void remove() {
         removed = true;
         onRemoving();
+    }
+    
+    /**
+     * Returns the rate of fire minimun delay.
+     * @return 
+     */
+    public long roft() {
+        return roft;
     }
     
     /**

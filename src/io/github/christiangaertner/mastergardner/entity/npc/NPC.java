@@ -35,8 +35,6 @@ public abstract class NPC extends Entity {
      */
     private boolean roftIdle = true;
     private ProjectileType projectileType = ProjectileType.BOMB;
-    
-    protected int fired = 0;
 
     /**
      * Move the NPC
@@ -88,8 +86,7 @@ public abstract class NPC extends Entity {
         long now = System.currentTimeMillis();
         
         Projectile p = ProjectileType.getProjectile(this.projectileType, x, y, dir);
-        
-        if (now - roftControll > p.ROFT) {
+        if (now - roftControll > p.roft()) {
             level.add(p);
             roftControll = now;
         }
@@ -117,10 +114,6 @@ public abstract class NPC extends Entity {
     
     public void setProjectile(ProjectileType t) {
         this.projectileType = t;
-    }
-    
-    public int getTimesFired() {
-        return fired;
     }
 
     /**
